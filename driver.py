@@ -5,6 +5,7 @@ import argparse
 import random
 import numpy as np
 from tensorflow import set_random_seed
+import loss
 
 os.environ['PYTHONHASHSEED']=str(SEED)
 np.random.seed(SEED)
