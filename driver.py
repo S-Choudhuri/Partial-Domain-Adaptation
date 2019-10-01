@@ -5,7 +5,6 @@ import argparse
 import random
 import numpy as np
 from tensorflow import set_random_seed
-import loss
 
 os.environ['PYTHONHASHSEED']=str(SEED)
 np.random.seed(SEED)
@@ -20,6 +19,7 @@ from keras.utils import multi_gpu_model
 from sklearn.metrics import accuracy_score
 import model
 import optimizer
+import loss_weights
 
 def pil_loader(path):
     # Return the RGB variant of input image
@@ -101,6 +101,7 @@ def train(param):
     weight_adv = np.ones((param["batch_size"] * 2,))
     S_batches = batch_generator([Xs, ys], param["batch_size"])
     T_batches = batch_generator([Xt, np.zeros(shape = (len(Xt),))], param["batch_size"])
+    classifier_weight = np.array(([1] * ys.shape[1]))
 
     param["target_accuracy"] = 0
 
@@ -122,7 +123,7 @@ def train(param):
                 adv_weights.append(layer.get_weights())
           
         stats1 = models["combined_model"].train_on_batch(X_adv, [y_class, y_advb_1],\
-                                sample_weight=[weight_class, weight_adv])            
+                                          sample_weight = [weight_class, weight_adv])            
         k = 0
         for layer in models["combined_model"].layers:
             if (layer.name.startswith("dis_")):                    
@@ -134,7 +135,15 @@ def train(param):
             if (not layer.name.startswith("dis_")):
                 class_weights.append(layer.get_weights())  
 
-        stats2 = models["combined_discriminator"].train_on_batch(X_adv, [y_advb_2])
+        stats2 = models["combined_discriminator"].train_on_batch(X_adv, [y_advb_2],\
+                                                       sample_weight = [weight_adv]) 
+
+        ys_pred = models["combined_classifier"].predict(Xs)
+        yt_pred = models["combined_classifier"].predict(Xt)
+        ysb_pred = models["combined_classifier"].predict(Xsb)
+        
+        weight_class, weight_adv = loss_weights.loss_weight(ys_pred, yt_pred, ysb_pred)
+        print('w = ', classifier_weight, weight_adv)
 
         k = 0
         for layer in models["combined_model"].layers:
@@ -143,8 +152,8 @@ def train(param):
                 k += 1
 
         if ((i + 1) % param["test_interval"] == 0):
-            ys_pred = models["combined_classifier"].predict(Xs)
-            yt_pred = models["combined_classifier"].predict(Xt)
+            #ys_pred = models["combined_classifier"].predict(Xs)
+            #yt_pred = models["combined_classifier"].predict(Xt)
             ys_adv_pred = models["combined_discriminator"].predict(Xs)
             yt_adv_pred = models["combined_discriminator"].predict(Xt)
 
@@ -179,7 +188,7 @@ if __name__ == "__main__":
     parser.add_argument('--dataset_name', type = str, default = 'Office', help = "Name of the source dataset")
     parser.add_argument('--dropout_classifier', type = float, default = 0.25, help = "Dropout ratio for classifier")
     parser.add_argument('--dropout_discriminator', type = float, default = 0.25, help = "Dropout ratio for discriminator")    
-    parser.add_argument('--source_path', type = str, default = 'amazon_10_list.txt', help = "Path to source dataset")
+    parser.add_argument('--source_path', type = str, default = 'amazon_31_list.txt', help = "Path to source dataset")
     parser.add_argument('--target_path', type = str, default = 'webcam_10_list.txt', help = "Path to target dataset")
     parser.add_argument('--lr_classifier', type = float, default = 0.0001, help = "Learning rate for classifier model")
     parser.add_argument('--b1_classifier', type = float, default = 0.9, help = "Exponential decay rate of first moment \
