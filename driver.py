@@ -142,8 +142,8 @@ def train(param):
         ysb_pred = models["combined_classifier"].predict(Xsb)
         
         weight_class, weight_adv = loss_weights.loss_weight(ys_pred, yt_pred, ysb_pred)
-        print('w_class = ', weight_class)
-        print('w_adv = ', weight_adv)        
+        #print('w_class = ', weight_class)
+        #print('w_adv = ', weight_adv)        
 
         k = 0
         for layer in models["combined_model"].layers:

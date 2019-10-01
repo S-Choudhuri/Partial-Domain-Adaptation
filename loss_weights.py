@@ -17,7 +17,9 @@ def weight_comp(y):
     return w
 
 def integrated_loss_weight(ws, wt):
-    return (1 - np.absolute(ws - wt)) / np.amax(1 - np.absolute(ws - wt))
+    w = (1 - np.absolute(ws - wt)) / np.amax(1 - np.absolute(ws - wt))
+    print(w)
+    return w
 
 def loss_weight(ys, yt, ysb):
     ws = weight_comp(ys)
