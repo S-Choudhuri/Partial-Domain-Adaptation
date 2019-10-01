@@ -1,9 +1,20 @@
 import numpy as np
 
 def weight_comp(y):
-    cw = np.sum(y, axis=0)
-    cw = cw / y.shape[0]
-    return cw
+    cw = np.array(([0.] * y.shape[1]))
+    cn = np.array(([0.] * y.shape[1]))
+    w = np.array(([0.] * y.shape[1]))
+    yi = y.argmax(1)
+
+    for i in range(y.shape[0]):
+        cw[yi[i]] = cw[yi[i]] + y[i, yi[i]]
+        cn[yi[i]] = cn[yi[i]] + 1
+    for i in range(cw.shape[0]):
+        if cn[i] == 0:
+            w[i] = cn[i]
+        else:
+            w[i] = cw[yi[i]] / cn[yi[i]]
+    return w
 
 def integrated_loss_weight(ws, wt):
     w = (1 - np.absolute(ws - wt)) / np.amax(1 - np.absolute(ws - wt))
