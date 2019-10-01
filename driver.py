@@ -101,7 +101,6 @@ def train(param):
     weight_adv = np.ones((param["batch_size"] * 2,))
     S_batches = batch_generator([Xs, ys], param["batch_size"])
     T_batches = batch_generator([Xt, np.zeros(shape = (len(Xt),))], param["batch_size"])
-    classifier_weight = np.array(([1] * ys.shape[1]))
 
     param["target_accuracy"] = 0
 
@@ -143,7 +142,8 @@ def train(param):
         ysb_pred = models["combined_classifier"].predict(Xsb)
         
         weight_class, weight_adv = loss_weights.loss_weight(ys_pred, yt_pred, ysb_pred)
-        print('w = ', classifier_weight, weight_adv)
+        print('w_class = ', weight_class)
+        print('w_adv = ', weight_adv)        
 
         k = 0
         for layer in models["combined_model"].layers:

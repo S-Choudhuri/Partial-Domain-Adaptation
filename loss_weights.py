@@ -17,13 +17,12 @@ def weight_comp(y):
     return w
 
 def integrated_loss_weight(ws, wt):
-    return 1 - np.absolute(ws-wt)
+    return 1 - 20*np.absolute(ws-wt)
 
 def loss_weight(ys, yt, ysb):
     ws = weight_comp(ys)
     wt = weight_comp(yt)
     w_class = integrated_loss_weight(ws, wt)
-    print(ysb.shape)
     w_sample_class = np.array(([0.] * 2 * ysb.shape[0]))
     w_sample_adv = np.array(([1.] * 2 * ysb.shape[0]))
 
