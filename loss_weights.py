@@ -1,19 +1,17 @@
 import numpy as np
 
 def weight_comp(y):
-    cw = np.sum(y, axis=0)
+    cw = np.sum(y, axis = 0)
     cw = cw / y.shape[0]
     return cw
 
-def integrated_loss_weight(ws, wt):
-    w = (1 - np.absolute(ws - wt)) / np.amax(1 - np.absolute(ws - wt))
-    print(w)
+def integrated_loss_weight(wt):
+    w = wt / np.amax(wt)
     return w
 
-def loss_weight(ys, yt, ysb):
-    ws = weight_comp(ys)
+def loss_weight(yt, ysb):
     wt = weight_comp(yt)
-    w_class = integrated_loss_weight(ws, wt)
+    w_class = integrated_loss_weight(wt)
     w_sample_class = np.array(([0.] * 2 * ysb.shape[0]))
     w_sample_adv = np.array(([1.] * 2 * ysb.shape[0]))
 
@@ -23,7 +21,3 @@ def loss_weight(ys, yt, ysb):
         w_sample_adv[i] = w_class[ysbi[i]]
 
     return w_sample_class, w_sample_adv
-
-
-
-

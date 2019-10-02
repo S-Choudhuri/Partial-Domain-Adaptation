@@ -138,12 +138,9 @@ def train(param):
                                                        sample_weight = [weight_adv]) 
 
         ys_pred = models["combined_classifier"].predict(Xs)
-        yt_pred = models["combined_classifier"].predict(Xt)
-        ysb_pred = models["combined_classifier"].predict(Xsb)
+        yt_pred = models["combined_classifier"].predict(Xt)       
         
-        weight_class, weight_adv = loss_weights.loss_weight(ys_pred, yt_pred, ysb_pred)
-        #print('w_class = ', weight_class)
-        #print('w_adv = ', weight_adv)        
+        weight_class, weight_adv = loss_weights.loss_weight(yt_pred, ysb)      
 
         k = 0
         for layer in models["combined_model"].layers:
@@ -152,8 +149,6 @@ def train(param):
                 k += 1
 
         if ((i + 1) % param["test_interval"] == 0):
-            #ys_pred = models["combined_classifier"].predict(Xs)
-            #yt_pred = models["combined_classifier"].predict(Xt)
             ys_adv_pred = models["combined_discriminator"].predict(Xs)
             yt_adv_pred = models["combined_discriminator"].predict(Xt)
 
