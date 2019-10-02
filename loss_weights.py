@@ -16,8 +16,7 @@ def loss_weight(yt, ysb):
     w_sample_adv = np.array(([1.] * 2 * ysb.shape[0]))
 
     ysbi = ysb.argmax(1)
-    for i in range(ysb.shape[0]):
-        w_sample_class[i] = w_class[ysbi[i]]
-        w_sample_adv[i] = w_class[ysbi[i]]
+    w_sample_class[0:ysb.shape[0]] = w_class[ysbi]
+    w_sample_adv[0:ysb.shape[0]] = w_class[ysbi]
 
     return w_sample_class, w_sample_adv
