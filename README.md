@@ -1,6 +1,6 @@
 # Partial Domain Adaptation
 
-Following is a **_Keras_** implementation of an Adversarial Domain Adaptation Model that assigns class labels to images in the _Target_ domain by extracting domain-invariant features from the labelled _Source_ and unlabelled _Target_ domain images. The architecture involves three sub-networks: _(a) domain-invariant feature extractor, (b) classifier and (c) domain discriminator._
+Following is a **_Keras_** implementation of an Partial Domain Adaptation Model that assigns class labels to images in the _Target_ domain by extracting domain-invariant features from the labelled _Source_ and unlabelled _Target_ domain images. The architecture involves three sub-networks: _(a) domain-invariant feature extractor, (b) classifier and (c) domain discriminator._
 
 
 ![Model Diagram](Diagrams/model_fig.png "Schematic diagram of the Model")
