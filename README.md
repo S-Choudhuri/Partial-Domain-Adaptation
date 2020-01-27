@@ -1,10 +1,10 @@
 # Partial Domain Adaptation
 
-Following is a **_Keras_** implementation of a Partial Domain Adaptation Model that assigns class labels to images in the _Target_ domain by extracting domain-invariant features from the labelled _Source_ and unlabelled _Target_ domain images. The architecture involves three sub-networks: _(a) domain-invariant feature extractor, (b) classifier and (c) domain discriminator._
+Following is a **_Keras_** implementation of a Partial Domain Adaptation Model that assigns class labels to images in the _Target_ domain by extracting domain-invariant features from the labelled _Source_ and unlabelled _Target_ domain images. This work caters towards a realistic scenario which relaxes the shared label space assumption, i.e., the target label space is only a subspace of the source label space. The architecture involves three sub-networks: _(a) domain-invariant feature extractor, (b) classifier and (c) domain discriminator._
 
+## License
 
-![Model Diagram](Diagrams/model_fig.png "Schematic diagram of the Model")
-
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/LICENSE)
 
 ## Dataset Download 
 
@@ -103,12 +103,11 @@ python driver.py --batch_size 32 --number_of_gpus 2 --lr_combined 0.00001 --num_
 
 The following code has drawn inspiration from the following papers:
 
-- *Ganin, Yaroslav, and Victor Lempitsky. "Unsupervised domain adaptation by backpropagation."* [\[Link\]](https://github.com/S-Choudhuri/Adversarial-Domain-Adaptation-with-Keras/blob/master/Papers/Unsupervised_Domain_Adaptation_by_Backpropagation.pdf)
+- *Zhangjie Cao, Mingsheng Long, Jianmin Wang, Michael I. Jordan. "Partial Transfer Learning with Selective Adversarial Networks"* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/1_CVPR2018_Partial Transfer Learning with Selective Adversarial Networks.pdf)
 
-- *Li, Yanghao, Naiyan Wang, Jianping Shi, Jiaying Liu, and Xiaodi Hou. "Revisiting batch normalization for practical domain adaptation."* [\[Link\]](https://github.com/S-Choudhuri/Adversarial-Domain-Adaptation-with-Keras/blob/master/Papers/Revisiting_Batch_Normalization_for_Practical_Domain_Adaptation.pdf)
+- *Ganin, Yaroslav, and Lempitsky. "Unsupervised domain adaptation by backpropagation."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/Unsupervised_Domain_Adaptation_by_Backpropagation.pdf)
 
-- *Tzeng, Eric, Judy Hoffman, Kate Saenko, and Trevor Darrell. "Adversarial discriminative domain adaptation."* [\[Link\]](https://github.com/S-Choudhuri/Adversarial-Domain-Adaptation-with-Keras/blob/master/Papers/Adversarial_Discriminative_Domain.pdf)
+- *Li, Yanghao, Naiyan Wang, Jianping Shi, Jiaying Liu, and Xiaodi Hou. "Revisiting batch normalization for practical domain adaptation."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/Revisiting_Batch_Normalization_for_Practical_Domain_Adaptation.pdf)
 
-## License
+- *Tzeng, Eric, Judy Hoffman, Kate Saenko, and Trevor Darrell. "Adversarial discriminative domain adaptation."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/Adversarial_Discriminative_Domain.pdf)
 
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/LICENSE)
