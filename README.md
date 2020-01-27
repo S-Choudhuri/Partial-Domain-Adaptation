@@ -1,6 +1,6 @@
 # Partial Domain Adaptation
 
-Following is a **_Keras_** implementation of a Partial Domain Adaptation Model that assigns class labels to images in the _Target_ domain by extracting domain-invariant features from the labelled _Source_ and unlabelled _Target_ domain images. This work caters towards a realistic scenario which relaxes the shared label space assumption, i.e., the target label space is only a subspace of the source label space. The architecture involves three sub-networks: _(a) domain-invariant feature extractor, (b) classifier and (c) domain discriminator._
+Following is a **_Keras_** implementation of a Partial Domain Adaptation Model that assigns class labels to images in the _Target_ domain by extracting domain-invariant features from the labelled _Source_ and unlabelled _Target_ domain images. This work caters towards a realistic scenario which relaxes the shared label space assumption (i.e., the target label space is only a subspace of the source label space) by introducing a class-level weighting mechanism to remove the negative influence of outlier source classes. The architecture involves three sub-networks: _(a) domain-invariant feature extractor, (b) classifier and (c) domain discriminator._
 
 ## License
 
