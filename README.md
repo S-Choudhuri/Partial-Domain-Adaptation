@@ -103,7 +103,7 @@ python driver.py --batch_size 32 --number_of_gpus 2 --lr_combined 0.00001 --num_
 
 The following code has drawn inspiration from the following papers:
 
-- *Zhangjie Cao, Mingsheng Long, Jianmin Wang, Michael I. Jordan. "Partial Transfer Learning with Selective Adversarial Networks"* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/1_CVPR2018_Partial Transfer Learning with Selective Adversarial Networks.pdf)
+- *Zhangjie Cao, Mingsheng Long, Jianmin Wang, Michael I. Jordan. "Partial Transfer Learning with Selective Adversarial Networks."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/1_CVPR2018_Partial_Transfer_Learning_with Selective_Adversarial_Networks.pdf)
 
 - *Ganin, Yaroslav, and Lempitsky. "Unsupervised domain adaptation by backpropagation."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/Unsupervised_Domain_Adaptation_by_Backpropagation.pdf)
 
