@@ -103,9 +103,11 @@ python driver.py --batch_size 32 --number_of_gpus 2 --lr_combined 0.00001 --num_
 
 The following code has drawn inspiration from the following papers:
 
-- *Zhangjie Cao, Mingsheng Long, Jianmin Wang, Michael I. Jordan. "Partial Transfer Learning with Selective Adversarial Networks."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/1_CVPR2018_Partial_Transfer_Learning_with_Selective_Adversarial_Networks.pdf)
+- *Zhangjie Cao, Mingsheng Long, Jianmin Wang and Michael I. Jordan. "Partial Transfer Learning with Selective Adversarial Networks."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/1_CVPR2018_Partial_Transfer_Learning_with_Selective_Adversarial_Networks.pdf)
 
-- *Ganin, Yaroslav, and Lempitsky. "Unsupervised domain adaptation by backpropagation."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/Unsupervised_Domain_Adaptation_by_Backpropagation.pdf)
+- *Jing Zhang, Zewei Ding, Wanqing Li and Philip Ogunbona. "Importance Weighted Adversarial Nets for Partial Domain Adaptation."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/2_CVPR2018_Importance_Weighted_Adversarial_Nets_for_Partial_Domain_Adaptation.pdf)
+
+- *Ganin, Yaroslav and Lempitsky. "Unsupervised domain adaptation by backpropagation."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/Unsupervised_Domain_Adaptation_by_Backpropagation.pdf)
 
 - *Li, Yanghao, Naiyan Wang, Jianping Shi, Jiaying Liu, and Xiaodi Hou. "Revisiting batch normalization for practical domain adaptation."* [\[Link\]](https://github.com/S-Choudhuri/Partial-Domain-Adaptation/blob/master/Papers/Revisiting_Batch_Normalization_for_Practical_Domain_Adaptation.pdf)
 
